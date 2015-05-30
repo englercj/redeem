@@ -1,0 +1,26 @@
+#!/usr/bin/env node
+
+var crypto = require('crypto');
+var ecc = require('eccrypto');
+
+var license = require('../lib');
+
+var privateKey = crypto.randomBytes(32);
+var publicKey = ecc.getPublic(privateKey);
+
+var originalLicData = {
+    Name: 'Chad Engler',
+    Expires: (new Date()).toISOString()
+};
+
+license.generate(originalLicData, privateKey)
+    .then(function (licenseString) {
+        console.log(licenseString);
+        return license.verify(licenseString, publicKey);
+    })
+    .then(function (licenseData) {
+        console.log('VALID LICENSE:', licenseData);
+    })
+    .catch(function (err) {
+        console.log('LICENSE INVALID!', err.stack);
+    });

@@ -1,0 +1,32 @@
+{
+  "name": "redeem",
+  "version": "1.0.0",
+  "description": "A license key generator and verifier",
+  "author": "Chad Engler <chad@pantherdev.com>",
+  "license": "ISC",
+  "main": "index.js",
+  "scripts": {
+    "genKey": "openssl ecparam -name secp256k1 -genkey -noout -out secp256k1-key.pem"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:englercj/redeem.git"
+  },
+  "keywords": [
+    "license",
+    "keys",
+    "ecdsa",
+    "crypto",
+    "redemption"
+  ],
+  "bugs": {
+    "url": "https://github.com/englercj/redeem/issues"
+  },
+  "homepage": "https://github.com/englercj/redeem",
+  "dependencies": {
+    "eccrypto": "^0.9.8"
+  },
+  "engines": {
+      "node": ">=0.12.x"
+  }
+}
